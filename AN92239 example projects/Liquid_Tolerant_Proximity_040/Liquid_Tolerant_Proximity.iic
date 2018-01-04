@@ -1,0 +1,14 @@
+;----------------RX8 packet structure----------------------------------------------------------
+;
+; Header = {0x0D 0x0A}
+; Data = Following 2 byte data variables in MSB first format:
+;        {RawCounts}           @1rc = MSB of raw count, @0rc = LSB of raw count
+;        {Baseline}            @1bl = MSB of baseline, @0bl = LSB of baseline
+;        {Difference Counts}   @1dc = MSB of difference counts, @0dc = LSB of difference counts
+; Tail = {0x00 0xFF 0xFF}
+;
+; For more details on RawCounts, Baseline and Difference counts, refer 
+; Getting Started with CapSense Design Guide: http://www.cypress.com/go/AN79953
+;----------------------------------------------------------------------------------------------
+rx8 [h=0d 0A] @1rc @0rc @1bl @0bl @1dc @0dc [t = 00 FF FF]
+

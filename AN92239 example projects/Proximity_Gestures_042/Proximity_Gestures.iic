@@ -1,0 +1,21 @@
+;----------------RX8 packet structure----------------------------------------------------------
+;
+; Header = {0x0D 0x0A}
+; Data = Following 2 byte data variables, in MSB first format:
+;        {Raw Count first}                @1rc0 = MSB of first sensor raw count, @0rc0 = LSB of first sensor raw count
+;        {Raw Count second}               @1rc1 = MSB of second sensor raw count, @0rc1 = LSB of second sensor raw count     
+;        {Baseline first}                 @1bl0 = MSB of first sensor baseline , @0bl0 = LSB of first sensor baseline
+;        {Baseline second}                @1bl1 = MSB of second sensor baseline , @0bl1 = LSB of second sensor baseline
+;        {Difference Counts first}        @1dc0 = MSB of first sensor difference counts, @0dc0 = LSB of first sensor difference counts
+;        {Difference Counts second}       @1dc1 = MSB of second sensor difference counts, @0dc1 = LSB of second sensor difference counts
+; Tail = {0x00 0xFF 0xFF}
+; For X- Axis gesture first sensor = PS1 , second sensor = PS2
+; For Y- Axis gesture first sensor = PS3 , second sensor = PS4
+; For more details on RawCounts, Baseline and Difference counts, refer 
+; Getting Started with CapSense Design Guide: http://www.cypress.com/go/AN79953
+;
+; For more details on Average Filter Output, Refer AN92239 – Proximity Sensing With CapSense
+; http://www.cypress.com/go/AN92239
+;----------------------------------------------------------------------------------------------
+rx8 [h=0d 0A] @1rc0 @0rc0 @1rc1 @0rc1 @1bl0 @0bl0 @1bl1 @0bl1 @1dc0 @0dc0 @1dc1 @0dc1 [t = 00 FF FF]
+
